@@ -1,0 +1,589 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.13366998477065364 -0.06699450802709965 0.9887588538494206 4.061770245255646
+  position 4.203441610403564 2.5803593992996197 1.3348427715404134
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+}
+Robot {
+  translation 2.521361120002175 0.20508288013623943 0.23541436680422045
+  rotation -0.6953556056216975 0.5317172384894852 -0.48348460164062956 2.023156316923166
+  children [
+    DEF torso_front Shape {
+      appearance RoughPolymer {
+        baseColor 0 0 0
+      }
+      geometry Box {
+        size 0.4 0.4 0.1
+      }
+    }
+    Solid {
+      translation 0.28 0 0.23
+      children [
+        Shape {
+          appearance PBRAppearance {
+            metalness 0
+          }
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+        Solid {
+          translation 0.11 -0.06 0.04
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.05
+                radius 0.02
+              }
+            }
+          ]
+        }
+        Solid {
+          translation 0.11 0.04 0.04
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.05
+                radius 0.02
+              }
+            }
+            LightSensor {
+              name "lightSensor1"
+            }
+          ]
+          name "solid(1)"
+        }
+      ]
+      name "solid(3)"
+    }
+    Solid {
+      translation 0.26044 0 0.0624781
+      rotation 0 1 0 2.87979
+      children [
+        DEF sphere1 Shape {
+          appearance PBRAppearance {
+            metalness 0
+          }
+          geometry Sphere {
+            radius 0.05
+          }
+        }
+        Solid {
+          translation -0.0445145 0 -0.0791461
+          rotation 0 -1 0 -0.523595307179586
+          children [
+            DEF cyl3 Shape {
+              appearance PBRAppearance {
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.15
+                radius 0.03
+              }
+            }
+          ]
+          boundingObject USE cyl3
+          physics DEF phy1 Physics {
+            mass 1
+          }
+        }
+        Solid {
+          translation 0.0534268 0 0.0197829
+          rotation 0 1 0 1.30899
+          children [
+            DEF cyl3 Shape {
+              appearance PBRAppearance {
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.15
+                radius 0.03
+              }
+            }
+          ]
+          name "solid(1)"
+          boundingObject USE cyl3
+          physics DEF phy1 Physics {
+            mass 1
+          }
+        }
+      ]
+      name "solid(4)"
+      boundingObject USE sphere1
+      physics USE phy1
+    }
+    DEF leg1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.2999402271465921
+        axis 0 0 1
+        anchor 0.09 0.2 0
+      }
+      device [
+        RotationalMotor {
+          name "front_left"
+          maxTorque 150
+        }
+      ]
+      endPoint Solid {
+        translation 0.08999999999999996 0.19999999999999998 0
+        rotation 0 0 -1 0.29994022714659135
+        children [
+          DEF sphere1 Shape {
+            appearance PBRAppearance {
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.05
+            }
+          }
+          Solid {
+            translation -0.0645145 0 -0.113787
+            rotation 0 -1 0 -0.523595307179586
+            children [
+              DEF cyl1 Shape {
+                appearance PBRAppearance {
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.25
+                  radius 0.03
+                }
+              }
+              Solid {
+                translation 0.01 0 -0.12
+                rotation 0 -1 0 1.7016996938995748
+                children [
+                  DEF sphere1 Shape {
+                    appearance PBRAppearance {
+                      metalness 0
+                    }
+                    geometry Sphere {
+                      radius 0.05
+                    }
+                  }
+                  Solid {
+                    translation -0.0645145 0 -0.113787
+                    rotation 0 -1 0 -0.523595307179586
+                    children [
+                      DEF cyl3 Shape {
+                        appearance PBRAppearance {
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.25
+                          radius 0.03
+                        }
+                      }
+                      Solid {
+                        translation 0 0 -0.14
+                        children [
+                          DEF sphere1 Shape {
+                            appearance PBRAppearance {
+                              metalness 0
+                            }
+                            geometry Sphere {
+                              radius 0.04
+                            }
+                          }
+                        ]
+                        boundingObject USE sphere1
+                        physics USE phy1
+                      }
+                    ]
+                    boundingObject USE cyl3
+                    physics DEF phy1 Physics {
+                      mass 1
+                    }
+                  }
+                ]
+                name "solid(1)"
+                boundingObject USE sphere1
+                physics USE phy1
+              }
+            ]
+            boundingObject USE cyl1
+            physics USE phy1
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE sphere1
+        physics USE phy1
+        linearVelocity 0.00285975208008586 -0.0010051657163801567 -0.002463226699950597
+        angularVelocity 0.016863291177244187 0.04993439949568238 -0.0001610161025437909
+      }
+    }
+    DEF leg2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.29997925499145306
+        axis 0 1 0
+        anchor 0.09 -0.2 0
+      }
+      device [
+        RotationalMotor {
+          name "front_right"
+          maxTorque 150
+        }
+      ]
+      endPoint Solid {
+        translation 0.08999999999999997 -0.19999999999999996 -4.036433115350443e-18
+        rotation 0 -1 0 0.2999792549914534
+        children [
+          DEF sphere1 Shape {
+            appearance PBRAppearance {
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.05
+            }
+          }
+          Solid {
+            translation -0.0645145 0 -0.113787
+            rotation 0 -1 0 -0.523595307179586
+            children [
+              DEF cyl1 Shape {
+                appearance PBRAppearance {
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.25
+                  radius 0.03
+                }
+              }
+              Solid {
+                translation 0.01 0 -0.12
+                rotation 0 -1 0 1.7016996938995748
+                children [
+                  DEF sphere1 Shape {
+                    appearance PBRAppearance {
+                      metalness 0
+                    }
+                    geometry Sphere {
+                      radius 0.05
+                    }
+                  }
+                  Solid {
+                    translation -0.0645145 0 -0.113787
+                    rotation 0 -1 0 -0.523595307179586
+                    children [
+                      DEF cyl3 Shape {
+                        appearance PBRAppearance {
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.25
+                          radius 0.03
+                        }
+                      }
+                      Solid {
+                        translation 0 0 -0.14
+                        children [
+                          DEF sphere1 Shape {
+                            appearance PBRAppearance {
+                              metalness 0
+                            }
+                            geometry Sphere {
+                              radius 0.04
+                            }
+                          }
+                        ]
+                        boundingObject USE sphere1
+                        physics USE phy1
+                      }
+                    ]
+                    boundingObject USE cyl3
+                    physics DEF phy1 Physics {
+                      mass 1
+                    }
+                  }
+                ]
+                name "solid(1)"
+                boundingObject USE sphere1
+                physics USE phy1
+              }
+            ]
+            boundingObject USE cyl1
+            physics USE phy1
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE sphere1
+        physics USE phy1
+        linearVelocity 0.02336354245492702 -0.007706422066667433 -0.0062183633390823
+        angularVelocity 0.016482803308503838 0.04984404281646752 8.951398289444015e-05
+      }
+    }
+    DEF torso HingeJoint {
+      jointParameters HingeJointParameters {
+        position 4.244419610967502e-06
+        axis 0 0 1
+        anchor -0.23 0 0
+        minStop -0.5
+        maxStop 0.5
+        staticFriction 1
+      }
+      device [
+        RotationalMotor {
+          name "torso_joint"
+          maxTorque 150
+        }
+      ]
+      endPoint Solid {
+        translation -0.24991582193916395 0.006245815833629873 5.335419999999746e-07
+        rotation -0.8413497655038552 0.5267341486641676 -0.12116810107302407 5.064623887972965e-05
+        children [
+          DEF torso_joint Shape {
+            appearance PBRAppearance {
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.1
+              radius 0.06
+            }
+          }
+          Solid {
+            translation -0.15 0 0
+            children [
+              DEF back Shape {
+                appearance RoughPolymer {
+                  baseColor 0 0 0
+                }
+                geometry Box {
+                  size 0.2 0.4 0.1
+                }
+              }
+              DEF leg3 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 0.20001789261954211
+                  axis 0 1 0
+                  anchor 0 0.2 0
+                }
+                device [
+                  RotationalMotor {
+                    name "back_left"
+                    maxTorque 150
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.0013444526059288983 0.19999999999999984 -0.008894317183505375
+                  rotation 0 0.9999999999999999 0 0.20001789261954117
+                  children [
+                    DEF sphere1 Shape {
+                      appearance PBRAppearance {
+                        metalness 0
+                      }
+                      geometry Sphere {
+                        radius 0.05
+                      }
+                    }
+                    Solid {
+                      translation -0.0645145 0 -0.113787
+                      rotation 0 -1 0 -0.523595307179586
+                      children [
+                        DEF cyl1 Shape {
+                          appearance PBRAppearance {
+                            metalness 0
+                          }
+                          geometry Cylinder {
+                            height 0.25
+                            radius 0.03
+                          }
+                        }
+                        Solid {
+                          translation 0.01 0 -0.12
+                          rotation 0 -1 0 1.7016996938995748
+                          children [
+                            DEF sphere1 Shape {
+                              appearance PBRAppearance {
+                                metalness 0
+                              }
+                              geometry Sphere {
+                                radius 0.05
+                              }
+                            }
+                            Solid {
+                              translation -0.0645145 0 -0.113787
+                              rotation 0 -1 0 -0.523595307179586
+                              children [
+                                DEF cyl3 Shape {
+                                  appearance PBRAppearance {
+                                    metalness 0
+                                  }
+                                  geometry Cylinder {
+                                    height 0.25
+                                    radius 0.03
+                                  }
+                                }
+                                Solid {
+                                  translation 0 0 -0.14
+                                  children [
+                                    DEF sphere1 Shape {
+                                      appearance PBRAppearance {
+                                        metalness 0
+                                      }
+                                      geometry Sphere {
+                                        radius 0.04
+                                      }
+                                    }
+                                  ]
+                                  boundingObject USE sphere1
+                                  physics USE phy1
+                                }
+                              ]
+                              boundingObject USE cyl3
+                              physics DEF phy1 Physics {
+                                mass 1
+                              }
+                            }
+                          ]
+                          name "solid(1)"
+                          boundingObject USE sphere1
+                          physics USE phy1
+                        }
+                      ]
+                      boundingObject USE cyl1
+                      physics USE phy1
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE sphere1
+                  physics USE phy1
+                  linearVelocity 0.002970944174959313 -0.000762445269398875 0.012604861613501807
+                  angularVelocity 0.016424908510520166 0.04982688560222405 -0.000315139122495135
+                }
+              }
+              DEF leg4 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -0.2771023459104942
+                  axis 0 1 0
+                  anchor 0 -0.2 0
+                }
+                device [
+                  RotationalMotor {
+                    name "back_right"
+                    maxTorque 150
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 -0.20000000000000004 0
+                  rotation 0 -1 0 0.277102345910494
+                  children [
+                    DEF sphere1 Shape {
+                      appearance PBRAppearance {
+                        metalness 0
+                      }
+                      geometry Sphere {
+                        radius 0.05
+                      }
+                    }
+                    Solid {
+                      translation -0.0645145 0 -0.113787
+                      rotation 0 -1 0 -0.523595307179586
+                      children [
+                        DEF cyl1 Shape {
+                          appearance PBRAppearance {
+                            metalness 0
+                          }
+                          geometry Cylinder {
+                            height 0.25
+                            radius 0.03
+                          }
+                        }
+                        Solid {
+                          translation 0.01 0 -0.12
+                          rotation 0 -1 0 1.7016996938995748
+                          children [
+                            DEF sphere1 Shape {
+                              appearance PBRAppearance {
+                                metalness 0
+                              }
+                              geometry Sphere {
+                                radius 0.05
+                              }
+                            }
+                            Solid {
+                              translation -0.0645145 0 -0.113787
+                              rotation 0 -1 0 -0.523595307179586
+                              children [
+                                DEF cyl3 Shape {
+                                  appearance PBRAppearance {
+                                    metalness 0
+                                  }
+                                  geometry Cylinder {
+                                    height 0.25
+                                    radius 0.03
+                                  }
+                                }
+                                Solid {
+                                  translation 0 0 -0.14
+                                  children [
+                                    DEF sphere1 Shape {
+                                      appearance PBRAppearance {
+                                        metalness 0
+                                      }
+                                      geometry Sphere {
+                                        radius 0.04
+                                      }
+                                    }
+                                  ]
+                                  boundingObject USE sphere1
+                                  physics USE phy1
+                                }
+                              ]
+                              boundingObject USE cyl3
+                              physics DEF phy1 Physics {
+                                mass 1
+                              }
+                            }
+                          ]
+                          name "solid(1)"
+                          boundingObject USE sphere1
+                          physics USE phy1
+                        }
+                      ]
+                      boundingObject USE cyl1
+                      physics USE phy1
+                    }
+                  ]
+                  name "solid(2)"
+                  boundingObject USE sphere1
+                  physics USE phy1
+                  linearVelocity 0.06099571265856944 -0.07589493461930139 0.00670110182349023
+                  angularVelocity 0.047599260606913246 0.06033060973519695 0.3350172723307431
+                }
+              }
+            ]
+            boundingObject USE back
+            physics USE phy1
+          }
+        ]
+        boundingObject USE torso_joint
+        physics USE phy1
+        linearVelocity 0.011836851372138519 -0.0038522384236147145 -0.0020875958994404148
+        angularVelocity 0.01643881500945981 0.04983120701776104 -0.00013600196728757086
+      }
+    }
+  ]
+  boundingObject USE torso_front
+  physics USE phy1
+  controller "my_controller1"
+  linearVelocity 0.01191189122810329 -0.003971376506946043 -0.0194871457781887
+  angularVelocity 0.016478526365405775 0.049841076901850634 -0.0001369736440797793
+}
